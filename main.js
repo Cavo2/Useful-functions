@@ -1,5 +1,5 @@
 
-
+// An array property that gets the last element of an array
 Object.defineProperties(Array.prototype, {
     last: {
         get(){
@@ -9,6 +9,7 @@ Object.defineProperties(Array.prototype, {
 })
 
 Object.defineProperties(Document.prototype, {
+	// A document method that gets all events of the web page
 	allEvents: {
 		get(){
 			let all = document.querySelectorAll( ':not( link, svg  *,svg, script, meta ) '),
