@@ -1,5 +1,25 @@
+// A function that can get elements by Attribute and it's value // document.getElementsByAttribute('attributeName', 'attributeValue')
+Document.prototype.getElementsByAttribute = function (name, value) {
+    
+    let result = [];
 
-// An array property that gets the last element of an array
+    function main ( node ) {
+        node ? null : node = document.body;
+        if ( node.getAttribute(name) === value ) {
+            result.push(node)
+        }
+        for ( let i = 0; i < node.children.length; i++ ) {
+            main( node.children[i] );
+        }
+    }
+
+    main()
+
+    return result;
+}
+
+
+// An array property that gets the last element of an array // array.last
 Object.defineProperties(Array.prototype, {
     last: {
         get(){
@@ -9,7 +29,7 @@ Object.defineProperties(Array.prototype, {
 })
 
 Object.defineProperties(Document.prototype, {
-	// A document method that gets all events of the web page
+	// A document method that gets all events of the web page // document.allEvents
 	allEvents: {
 		get(){
 			let all = document.querySelectorAll( ':not( link, svg  *,svg, script, meta ) '),
@@ -30,7 +50,6 @@ Object.defineProperties(Document.prototype, {
 		}
 	}
 })
- 
 
 
 
